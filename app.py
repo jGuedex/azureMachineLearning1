@@ -35,15 +35,13 @@ def predict():
 
     class_number = model.predict([query])
     class_name = classes[class_number[0]]
-
-    print("---> ", class_number[0])
     
     # Há uma lista ordenada decrescente contendo as predições
     # É escolhido o índice zero, já que é o que tem a maior confiança
     #result = prediction[0]
 
     #return render_template('home.html', prediction_text="AQI for Jaipur {}".format(prediction[0]))
-    return render_template('home.html', prediction_text="Categoria sugerida: {}".format(class_name))
+    return render_template('home.html', prediction_text="Categoria sugerida: {}".format(class_name), original_query="Questionamento: {}".format(query))
 
 # Rota responsável por receber o questionamento feito pelo usuário
 @app.route('/predict_api',methods=['POST'])
